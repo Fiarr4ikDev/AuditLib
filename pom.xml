@@ -11,7 +11,7 @@
 
     <groupId>ru.fiarr4ik</groupId>
     <artifactId>spring-boot-starter-audit-lib</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2</version>
     <name>spring-boot-starter-audit-lib</name>
     <description>spring-boot-starter-audit-lib</description>
     <url/>
