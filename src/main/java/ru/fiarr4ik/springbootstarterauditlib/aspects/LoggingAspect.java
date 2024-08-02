@@ -33,10 +33,14 @@ import java.util.stream.Collectors;
     @Aspect
     @Component
     public class LoggingAspect {
+
         private static final Logger LOGGER = LogManager.getLogger(LoggingAspect.class);
+        private final LoggingConfig loggingConfig;
 
         @Autowired
-        private LoggingConfig loggingConfig;
+        public LoggingAspect(LoggingConfig loggingConfig) {
+            this.loggingConfig = loggingConfig;
+        }
 
         @Pointcut("@annotation(ru.fiarr4ik.springbootstarterauditlib.annotations.AuditLog)")
         private void loggerAnnotation() {
@@ -79,10 +83,10 @@ import java.util.stream.Collectors;
             log(LogLevel.INFO, String.format("Время запроса: %s, Тип запроса: %s, Тело запроса: %s",
                     LocalDateTime.now(), request.getMethod(), requestBody));
         }
+
             /**
          * Логирование после выполнения запроса
          */
-
         @AfterReturning(pointcut = "loggerAnnotation()", returning = "result")
         public void afterRequest(JoinPoint joinPoint, Object result) {
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
@@ -146,4 +150,5 @@ import java.util.stream.Collectors;
                 LOGGER.error("Ошибка при записи в файл логов: {}", e.getMessage());
             }
         }
+
     }

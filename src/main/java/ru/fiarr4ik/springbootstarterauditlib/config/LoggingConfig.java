@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
     @ConfigurationProperties(prefix = "auditlog")
     @ComponentScan(basePackages = "ru.fiarr4ik.springbootstarterauditlib")
     public class LoggingConfig {
+
         private boolean consoleEnabled;
         private boolean fileEnabled;
         private String filePath;
@@ -38,4 +39,5 @@ import org.springframework.context.annotation.Configuration;
         public void setFilePath(String filePath) {
             this.filePath = filePath;
         }
+
     }

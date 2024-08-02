@@ -14,5 +14,7 @@ import java.lang.annotation.Target;
     @Target(ElementType.METHOD)
     @Retention(RetentionPolicy.RUNTIME)
     public @interface AuditLog {
+
         LogLevel logLevel() default LogLevel.INFO;
+
     }
